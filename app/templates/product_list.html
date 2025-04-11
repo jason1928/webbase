@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h3>Product List</h3>
+
+<div class="card p-4">
+  <div class="d-flex justify-content-between mb-3">
+    <h5 class="mb-0">Daftar Produk</h5>
+    <a href="#" class="btn btn-success">+ Tambah Produk</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-light">
+        <tr>
+          <th>No</th>
+          <th>Nama Produk</th>
+          <th>Kategori</th>
+          <th>Harga</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Contoh data statis -->
+        <tr>
+          <td>1</td>
+          <td>Air Mineral</td>
+          <td>Minuman</td>
+          <td>Rp 5.000</td>
+          <td><span class="badge bg-success">Aktif</span></td>
+          <td>
+            <a href="#" class="btn btn-sm btn-primary">Edit</a>
+            <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Kopi Hitam</td>
+          <td>Minuman</td>
+          <td>Rp 8.000</td>
+          <td><span class="badge bg-danger">Nonaktif</span></td>
+          <td>
+            <a href="#" class="btn btn-sm btn-primary">Edit</a>
+            <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

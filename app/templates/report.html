@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h3>Report</h3>
+
+<div class="card p-4">
+  <form class="row g-3 mb-4">
+    <div class="col-md-4">
+      <label for="startDate" class="form-label">Tanggal Mulai</label>
+      <input type="date" class="form-control" id="startDate">
+    </div>
+    <div class="col-md-4">
+      <label for="endDate" class="form-label">Tanggal Selesai</label>
+      <input type="date" class="form-control" id="endDate">
+    </div>
+    <div class="col-md-4 d-flex align-items-end">
+      <button type="submit" class="btn btn-primary w-100">Tampilkan Laporan</button>
+    </div>
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-light">
+        <tr>
+          <th>Tanggal</th>
+          <th>Jenis Transaksi</th>
+          <th>Deskripsi</th>
+          <th>Jumlah</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Contoh data statis, nanti bisa diisi dari backend -->
+        <tr>
+          <td>2025-04-10</td>
+          <td>Debit</td>
+          <td>Pembelian bahan baku</td>
+          <td>Rp 2.000.000</td>
+        </tr>
+        <tr>
+          <td>2025-04-11</td>
+          <td>Kredit</td>
+          <td>Pembayaran dari customer</td>
+          <td>Rp 3.500.000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

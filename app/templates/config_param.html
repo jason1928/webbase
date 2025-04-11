@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h3>Parameter Setting</h3>
+
+<div class="card p-4">
+  <h5 class="mb-3">Konfigurasi Parameter Sistem</h5>
+  <form>
+    <div class="mb-3">
+      <label for="max_transaction" class="form-label">Batas Maksimum Transaksi</label>
+      <input type="number" class="form-control" id="max_transaction" placeholder="Masukkan jumlah maksimal transaksi">
+    </div>
+    <div class="mb-3">
+      <label for="default_currency" class="form-label">Mata Uang Default</label>
+      <select class="form-select" id="default_currency">
+        <option value="IDR">IDR (Rupiah)</option>
+        <option value="USD">USD (Dollar)</option>
+        <option value="EUR">EUR (Euro)</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="notif_email" class="form-label">Email Notifikasi</label>
+      <input type="email" class="form-control" id="notif_email" placeholder="contoh@email.com">
+    </div>
+    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+  </form>
+</div>
+{% endblock %}

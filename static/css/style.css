@@ -1,0 +1,7 @@
+.sidebar {
+    height: 100vh;
+}
+.nav-link:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}

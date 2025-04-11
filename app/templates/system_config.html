@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h3>System Config</h3>
+
+<div class="card p-4">
+  <form>
+    <div class="mb-3 row">
+      <label for="siteName" class="col-sm-3 col-form-label">Nama Situs</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="siteName" placeholder="Masukkan nama situs">
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="timezone" class="col-sm-3 col-form-label">Zona Waktu</label>
+      <div class="col-sm-9">
+        <select class="form-select" id="timezone">
+          <option selected>Pilih zona waktu</option>
+          <option>Asia/Jakarta</option>
+          <option>Asia/Makassar</option>
+          <option>Asia/Jayapura</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="maintenance" class="col-sm-3 col-form-label">Mode Maintenance</label>
+      <div class="col-sm-9">
+        <select class="form-select" id="maintenance">
+          <option value="off" selected>Off</option>
+          <option value="on">On</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="text-end">
+      <button type="submit" class="btn btn-primary">Simpan Konfigurasi</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

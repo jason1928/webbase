@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Dashboard</h3>
+<div class="card p-3 my-3">
+  <h5 class="mb-2">GKPS CITEUREUP</h5>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Rp. TOTAL TRANKSAKSI</h3>
+      <p>Main Account : Rp. SALDO<br>Master Wallet : Rp. SALDO</p>
+    </div>
+    <div class="col-md-6 text-end">
+      <p>Ops External : Rp. SALDO OPERATIONAL EKSETERNAL<br>Ops Internal : Rp. SALDO INTERNAL</p>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3">
+  {% for title, value, color in [
+    ("TOTAL TRANSACTION", "", "info"),
+    ("TOTAL USERS", "", "info"),
+    ("TOTAL TRANKSAKSI", "", "warning"),
+  ] %}
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm p-3 bg-{{ color }} text-white">
+      <h6>{{ title }}</h6>
+      <h4>{{ value }}</h4>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
