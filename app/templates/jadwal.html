@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Jadwal - Dashboard GKPS Citeureup</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f4f3;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #2e4b3f;
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .sidebar nav {
+      width: 100%;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 25px;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color: #ffffff;
+      color: #2e4b3f;
+    }
+
+    .content {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .dashboard-header {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .jadwal-list {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .jadwal-list h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .jadwal-list ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .jadwal-list li {
+      background-color: #e3e3e3;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .jadwal-list li span {
+      font-weight: bold;
+    }
+
+    .jadwal-list li p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <img src="https://via.placeholder.com/100" alt="Logo" class="logo">
+    <h2>GKPS<br>CITEUREUP</h2>
+    <nav>
+      <a href="/dashboard">🏠 Dashboard</a>
+      <a href="/jemaat">👥 Jemaat</a>
+      <a href="/jadwal" class="active">📅 Jadwal</a>
+      <a href="/keuangan">💰 Keuangan</a>
+      <a href="/warta">📰 Warta</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="dashboard-header">JADWAL KEGIATAN</div>
+
+    <div class="jadwal-list">
+      <h3>Jadwal Kegiatan Gereja</h3>
+      <ul>
+        <li>
+          <span>Kebaktian Partonggoan Rumah Tangga</span>
+          <p>Jumat, 4 April 2025 | Pukul 19.00 WIB</p>
+        </li>
+        <li>
+          <span>PA Seksi Inang</span>
+          <p>Sabtu, 12 April 2025 | Pukul 17.00 WIB</p>
+        </li>
+        <li>
+          <span>Minggu Hari Bumi</span>
+          <p>Minggu, 13 April 2025 | Pukul 09.30 WIB (Bahasa Simalungun)</p>
+        </li>
+        <li>
+          <span>Ibadah Keluarga</span>
+          <p>Senin, 14 April 2025 | Pukul 20.00 WIB</p>
+        </li>
+        <li>
+          <span>Persiapan Pesta HUT GKPS Citeureup</span>
+          <p>Sabtu, 20 April 2025 | Pukul 08.00 WIB</p>
+        </li>
+      </ul>
+    </div>
+  </main>
+</body>
+</html>

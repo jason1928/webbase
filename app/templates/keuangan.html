@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Keuangan - GKPS Citeureup</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f4f3;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #2e4b3f;
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .sidebar nav {
+      width: 100%;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 25px;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color: #ffffff;
+      color: #2e4b3f;
+    }
+
+    .content {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .dashboard-header {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .keuangan-summary h3,
+    .keuangan-transactions h3 {
+      color: #2e4b3f;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .summary-item:last-child {
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table thead {
+      background-color: #2e4b3f;
+      color: white;
+    }
+
+    table th, table td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+
+    img.logo {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+
+    /* Styling for the form */
+    .form-container {
+      margin-bottom: 20px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container input,
+    .form-container select,
+    .form-container button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .form-container button {
+      background-color: #2e4b3f;
+      color: white;
+      cursor: pointer;
+    }
+
+    .form-container button:hover {
+      background-color: #245136;
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <img src="https://via.placeholder.com/100" alt="Logo" class="logo">
+    <h2>GKPS<br>CITEUREUP</h2>
+    <nav>
+      <a href="/dashboard">🏠 Dashboard</a>
+      <a href="/jemaat">👥 Jemaat</a>
+      <a href="/jadwal">📅 Jadwal</a>
+      <a href="/keuangan" class="active">💰 Keuangan</a>
+      <a href="/warta">📰 Warta</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="dashboard-header">KEUANGAN</div>
+
+    <!-- Form Input Transaksi Keuangan -->
+    <div class="form-container">
+      <h3>Tambah Transaksi</h3>
+      <form action="/keuangan/save" method="POST">
+        <label for="tanggal">Tanggal:</label>
+        <input type="date" id="tanggal" name="tanggal" required>
+
+        <label for="keterangan">Keterangan:</label>
+        <input type="text" id="keterangan" name="keterangan" required>
+
+        <label for="pemasukan">Pemasukan (Rp):</label>
+        <input type="number" id="pemasukan" name="pemasukan" min="0" value="0">
+
+        <label for="pengeluaran">Pengeluaran (Rp):</label>
+        <input type="number" id="pengeluaran" name="pengeluaran" min="0" value="0">
+
+        <button type="submit">Simpan Transaksi</button>
+      </form>
+    </div>
+
+    <!-- Ringkasan Keuangan -->
+    <div class="keuangan-summary">
+      <h3>Ringkasan Keuangan</h3>
+      <div class="summary-item">
+        <span>Total Pemasukan:</span>
+        <span>Rp. {{ "{:,}".format(total_pemasukan).replace(',', '.') }}</span>
+      </div>
+      <div class="summary-item">
+        <span>Total Pengeluaran:</span>
+        <span>Rp. {{ "{:,}".format(total_pengeluaran).replace(',', '.') }}</span>
+      </div>
+      <div class="summary-item">
+        <span>Sisa Saldo:</span>
+        <span>Rp. {{ "{:,}".format(saldo).replace(',', '.') }}</span>
+      </div>
+    </div>
+
+    <!-- Tabel Transaksi -->
+    <div class="keuangan-transactions">
+      <h3>Transaksi Keuangan</h3>
+      <form action="{{ url_for('download_keuangan') }}" method="get" style="display: inline;">
+        <button type="submit" class="btn btn-sm mb-3" style="background-color: #28a745; color: white;">
+          Download data keuangan
+        </button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Tanggal</th>
+            <th>Keterangan</th>
+            <th>Pemasukan</th>
+            <th>Pengeluaran</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for transaksi in transaksi %}
+          <tr>
+            <td>{{ transaksi.tanggal.strftime('%d %B %Y') }}</td>
+            <td>{{ transaksi.keterangan }}</td>
+            <td>
+              {% if transaksi.pemasukan > 0 %}
+                Rp. {{ "{:,}".format(transaksi.pemasukan).replace(',', '.') }}
+              {% else %}-{% endif %}
+            </td>
+            <td>
+              {% if transaksi.pengeluaran > 0 %}
+                Rp. {{ "{:,}".format(transaksi.pengeluaran).replace(',', '.') }}
+              {% else %}-{% endif %}
+            </td>
+            <td>
+                <a href="{{ url_for('edit_transaksi', id=transaksi.id) }}" class="btn btn-warning btn-sm" style="margin-right: 5px;">Edit</a>
+                <form action="{{ url_for('delete_transaksi', id=transaksi.id) }}" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus transaksi ini?')">Hapus</button>
+                </form>
+              </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>

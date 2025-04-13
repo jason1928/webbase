@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard GKPS Citeureup</title>
+  <title>Warta - Dashboard GKPS Citeureup</title>
   <style>
     body {
       margin: 0;
@@ -61,62 +61,56 @@
       margin-bottom: 25px;
     }
 
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+    .warta-section {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       margin-bottom: 30px;
     }
 
-    .card {
-      background-color: #d2bb62;
-      padding: 20px;
-      border-radius: 10px;
-      color: white;
-      flex: 1;
-      min-width: 220px;
+    .warta-section h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
     }
 
-    .card.dark {
-      background-color: #47555e;
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 16px;
-    }
-
-    .card .value {
-      font-size: 26px;
-      font-weight: bold;
-    }
-
-    .card ul {
+    .warta-section ul {
       padding-left: 20px;
       font-size: 14px;
     }
 
-    .warta {
-      background-color: #2f3e3f;
-      color: white;
+    .warta-form {
+      background-color: #ffffff;
       padding: 20px;
       border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .warta h4 {
+    .warta-form h4 {
       font-size: 18px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
-    .warta ul {
-      padding-left: 20px;
-      font-size: 14px;
-    }
-
-    img.logo {
-      width: 100px;
+    .warta-form textarea {
+      width: 100%;
       height: 100px;
-      margin-bottom: 10px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .warta-form button {
+      padding: 10px 20px;
+      background-color: #2e4b3f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .warta-form button:hover {
+      background-color: #47555e;
     }
   </style>
 </head>
@@ -126,44 +120,32 @@
     <h2>GKPS<br>CITEUREUP</h2>
     <nav>
       <a href="/dashboard">🏠 Dashboard</a>
-      <a href="/jemaat" >👥 Jemaat</a>
+      <a href="/jemaat">👥 Jemaat</a>
       <a href="/jadwal">📅 Jadwal</a>
       <a href="/keuangan">💰 Keuangan</a>
-      <a href="/warta">📰 Warta</a>
+      <a href="/warta" class="active">📰 Warta</a>
     </nav>
-    
   </aside>
 
   <main class="content">
-    <div class="dashboard-header">DASHBOARD</div>
+    <div class="dashboard-header">WARTA</div>
 
-    <div class="cards">
-      <div class="card">
-        <h3>JEMAAT</h3>
-        <div class="value">150 👤</div>
-      </div>
-      <div class="card dark">
-        <h3>KEUANGAN</h3>
-        <div class="value">Rp. 2.500.000</div>
-      </div>
-      <div class="card">
-        <h3>JADWAL</h3>
-        <ul>
-          <li>Kebaktian Partonggoan Rumah Tangga, Jumat 4 April 2025 pkl. 19.00 WIB</li>
-          <li>PA Seksi Inang, Sabtu 12 April 2025 pkl. 17.00 WIB</li>
-          <li>Minggu 13 April 2025 pkl. 09.30 WIB - Hari Bumi (Bahasa Simalungun)</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="warta">
-      <h4>WARTA</h4>
+    <div class="warta-section">
+      <h3>Warta Terbaru</h3>
       <ul>
         <li>Sosialisasi Pesta HUT GKPS Citeureup ke-23...</li>
         <li>Bazaar Sekolah Minggu akan diadakan pada bulan Juni...</li>
         <li>Pengarahan acara ibadah keluarga Bp. Immanuel Sipayung...</li>
         <li>Marguru Manaksihon Rencana Ibadah bulan Mei 2025...</li>
       </ul>
+    </div>
+
+    <div class="warta-form">
+      <h4>Tambah Warta</h4>
+      <form action="/warta/save" method="POST">
+        <textarea name="warta" placeholder="Tuliskan warta baru di sini..."></textarea>
+        <button type="submit">Simpan Warta</button>
+      </form>
     </div>
   </main>
 </body>
